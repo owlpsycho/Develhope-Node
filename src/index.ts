@@ -72,8 +72,8 @@ app.put('/api/planets/:id', validatePlanet, (req, res) => {
 });
 
 app.delete('/api/planets/:id', (req, res) => {
-  const planetId = parseInt(req.params.id, 10);
-  planets = planets.filter((p) => p.id !== planetId);
+  const planetId = req.params.id;
+  planets = planets.filter((planet) => String(planet.id) !== planetId);
   res.json({ msg: 'Planet deleted successfully' });
 });
 
