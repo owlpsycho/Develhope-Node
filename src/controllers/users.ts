@@ -4,7 +4,7 @@ import { Request, Response } from "express";
 import { db } from "../db";
 import jwt from "jsonwebtoken"
 
-const logIn =async (req:Request, res:Response) => {
+const logIn = async (req:Request, res:Response) => {
     const {username, password } = req.body;
 
     const user = (await db.oneOrNone(`SELECT * FROM users WHERE username=$1`, username)) as { id: number, username: string, password: string, token: string } | null;
@@ -23,4 +23,16 @@ const logIn =async (req:Request, res:Response) => {
     }
 }
 
-export { logIn }
+const signUp = async (req:Request, res:Response) => {
+    const { username, password } = req.body
+    const user = await db.oneOrNone(`SELECT * FROM users WHERE username=$1`, username)
+
+    if (user) {
+        res.status(400).json({ msg: "User already exist "})
+    } else {
+       const { id } = await db.one(`INSERT INTO users (username, password) VALUES ($1, $2) RETURNING id`, [username, password])
+       res.status(201).json({id, msg: "Signup successful. Now you can log in."}) 
+    }
+}
+
+export { logIn, signUp}
