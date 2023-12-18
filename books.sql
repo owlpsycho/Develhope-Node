@@ -8,7 +8,7 @@ CREATE TABLE Books (
     price DECIMAL,
     rating FLOAT,
     stock_count INT
-);
+)
 
 ALTER TABLE Books
 ADD COLUMN publisher VARCHAR,
