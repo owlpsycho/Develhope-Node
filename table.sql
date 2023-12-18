@@ -9,3 +9,7 @@ CREATE TABLE Books (
     rating FLOAT,
     stock_count INT
 );
+
+ALTER TABLE Books
+ADD COLUMN publisher VARCHAR,
+ADD COLUMN num_pages INT;
