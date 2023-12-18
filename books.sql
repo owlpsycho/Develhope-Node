@@ -11,7 +11,7 @@ CREATE TABLE Books (
 )
 
 ALTER TABLE Books
-ADD COLUMN publisher VARCHAR,
+ADD COLUMN publisher TEXT,
 ADD COLUMN num_pages INT;
 
 INSERT INTO Books (title, author, genre, published_year, isbn, price, rating, stock_count, publisher, num_pages)
