@@ -11,5 +11,5 @@ CREATE TABLE Books (
 );
 
 ALTER TABLE Books
-ADD COLUMN publisher VARCHAR,
+ADD COLUMN publisher TEXT,
 ADD COLUMN num_pages INT;
