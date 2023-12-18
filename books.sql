@@ -29,4 +29,4 @@ WHERE
   title = 'War and Peace';
 
 GRANT SELECT, UPDATE ON Books TO 'martin'@'localhost';
-REVOKE DELETE ON Books FROM 'martin'@'localhost';
+REVOKE DELETE, UPDATE ON Books FROM 'martin'@'localhost';
